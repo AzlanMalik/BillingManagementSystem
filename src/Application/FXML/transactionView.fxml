@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="721.0" prefWidth="948.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controller.transactionViewController">
+   <children>
+      <Label maxHeight="80.0" maxWidth="2000.0" prefHeight="80.0" prefWidth="948.0" style="-fx-background-color: white;" text="Transaction" VBox.vgrow="ALWAYS">
+         <font>
+            <Font size="33.0" />
+         </font>
+         <padding>
+            <Insets left="25.0" />
+         </padding>
+      </Label>
+      <Separator prefHeight="0.0" prefWidth="908.0" VBox.vgrow="ALWAYS">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </Separator>
+      <HBox alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="908.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+         <children>
+            <Label contentDisplay="RIGHT" graphicTextGap="600.0" maxHeight="134.0" maxWidth="2000.0" prefHeight="134.0" prefWidth="682.0" style="-fx-background-color: white;" text="Unpaid Invoices" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="23.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <JFXButton buttonType="RAISED" prefHeight="36.0" prefWidth="111.0" text="Deposit">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" prefHeight="36.0" prefWidth="111.0" text="Return">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </JFXButton>
+         </children>
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+      </HBox>
+      <Separator prefHeight="14.0" prefWidth="908.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
+      </Separator>
+      <HBox alignment="CENTER" maxHeight="80.0" prefHeight="80.0" prefWidth="908.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+         <children>
+            <TextField maxWidth="700.0" prefHeight="40.0" prefWidth="510.0" HBox.hgrow="ALWAYS" />
+            <ComboBox maxWidth="220.0" prefHeight="40.0" prefWidth="186.0" HBox.hgrow="ALWAYS" />
+            <JFXButton buttonType="RAISED" maxWidth="160.0" prefHeight="40.0" prefWidth="126.0" text="Search" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin></JFXButton>
+         </children>
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
+      </HBox>
+      <TableView maxHeight="800.0" prefHeight="472.0" prefWidth="908.0" VBox.vgrow="ALWAYS">
+        <columns>
+          <TableColumn prefWidth="150.3999900817871" text="C1" />
+          <TableColumn minWidth="0.0" prefWidth="0.0" text="C2" />
+        </columns>
+         <VBox.margin>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+      </TableView>
+   </children>
+</VBox>

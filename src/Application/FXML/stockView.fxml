@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="721.0" prefWidth="948.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controller.stockController">
+   <children>
+      <Label maxHeight="80.0" maxWidth="2000.0" prefHeight="80.0" prefWidth="948.0" style="-fx-background-color: white;" text="Stock" VBox.vgrow="ALWAYS">
+         <font>
+            <Font size="33.0" />
+         </font>
+         <padding>
+            <Insets left="25.0" />
+         </padding>
+      </Label>
+      <HBox alignment="CENTER_RIGHT" prefHeight="66.0" prefWidth="908.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+         <children>
+            <Label contentDisplay="RIGHT" graphicTextGap="600.0" maxHeight="70.0" maxWidth="2000.0" prefHeight="42.0" prefWidth="690.0" style="-fx-background-color: white;" text="Update Stock" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="23.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <JFXButton buttonType="RAISED" prefHeight="36.0" prefWidth="111.0" text="Add Stock">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" prefHeight="36.0" prefWidth="111.0" text="Remove Stock">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </JFXButton>
+         </children>
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" top="15.0" />
+         </VBox.margin>
+      </HBox>
+      <Separator prefHeight="31.0" prefWidth="908.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
+      </Separator>
+      <HBox maxHeight="180.0" prefHeight="180.0" prefWidth="908.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
+         <children>
+            <VBox prefHeight="147.0" prefWidth="434.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label prefHeight="35.0" prefWidth="500.0" text="Product Name" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ComboBox prefHeight="40.0" prefWidth="500.0" />
+                  <Label prefHeight="35.0" prefWidth="500.0" text="Quantity">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField prefHeight="40.0" prefWidth="500.0" />
+               </children>
+               <HBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="140.0" prefWidth="411.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label prefHeight="35.0" prefWidth="500.0" text="Product Id">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField prefHeight="40.0" prefWidth="500.0" />
+                  <Label prefHeight="35.0" prefWidth="500.0" text="Manufacturer">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField prefHeight="40.0" prefWidth="500.0" />
+               </children>
+               <HBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+      <Label contentDisplay="TOP" maxHeight="70.0" maxWidth="2000.0" prefHeight="66.0" prefWidth="908.0" style="-fx-background-color: white;" text="Current Stock" VBox.vgrow="ALWAYS">
+         <font>
+            <Font size="23.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" top="10.0" />
+         </VBox.margin>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </Label>
+      <Separator prefHeight="31.0" prefWidth="908.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
+      </Separator>
+      <HBox alignment="CENTER" maxHeight="80.0" prefHeight="80.0" prefWidth="908.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+         <children>
+            <TextField maxWidth="700.0" prefHeight="40.0" prefWidth="510.0" HBox.hgrow="ALWAYS" />
+            <ComboBox maxWidth="200.0" prefHeight="40.0" prefWidth="186.0" HBox.hgrow="ALWAYS" />
+            <JFXButton buttonType="RAISED" maxWidth="140.0" prefHeight="40.0" prefWidth="126.0" text="Search" HBox.hgrow="ALWAYS" />
+         </children>
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
+      </HBox>
+      <TableView maxHeight="800.0" prefHeight="346.0" prefWidth="908.0" VBox.vgrow="ALWAYS">
+        <columns>
+          <TableColumn prefWidth="150.3999900817871" text="C1" />
+          <TableColumn minWidth="0.0" prefWidth="0.0" text="C2" />
+        </columns>
+         <VBox.margin>
+            <Insets bottom="10.0" left="20.0" right="20.0" />
+         </VBox.margin>
+      </TableView>
+   </children>
+</VBox>

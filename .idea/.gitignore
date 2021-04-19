@@ -1,0 +1,9 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+.idea/
+# Datasource local storage ignored files
+/../../../../:\Projects\DCI_Application\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/

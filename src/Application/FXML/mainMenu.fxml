@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1110.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controller.mainMenuController">
+   <center>
+      <AnchorPane minHeight="680.0" minWidth="780.0" prefHeight="680.0" prefWidth="780.0" style="-fx-background-color: #ffffff;" stylesheets="@../CSS/bootStrap2.css" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <HBox alignment="CENTER_LEFT" onMouseClicked="#displayDashboard" prefHeight="61.0" prefWidth="1002.0" style="-fx-background-color: ligthGrey;" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="86.0" prefWidth="258.0" style="-fx-background-color: lightGreen;" text="My Invoice">
+               <font>
+                  <Font name="Segoe UI Bold" size="35.0" />
+               </font>
+               <textFill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="0.8814814686775208" blue="0.8814814686775208" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+            </Label>
+            <Separator orientation="VERTICAL" prefHeight="62.0" prefWidth="0.0" />
+            <Pane maxWidth="1000.0" prefHeight="70.0" prefWidth="109.0" style="-fx-background-color: white;" HBox.hgrow="ALWAYS" />
+            <HBox alignment="CENTER_LEFT" fillHeight="false" maxHeight="-Infinity" prefHeight="36.0" prefWidth="247.0" stylesheets="@../CSS/dashboard.css">
+               <children>
+                  <TextField prefHeight="24.0" prefWidth="190.0" promptText="Search Customer..." style="-fx-background-color: white;" styleClass="white-background">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <ImageView fitHeight="25.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" styleClass="white-background">
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
+                     <image>
+                        <Image url="@../Icons/searchIcon.png" />
+                     </image></ImageView>
+               </children>
+               <styleClass>
+                  <String fx:value="round-Layout" />
+                  <String fx:value="white-background" />
+               </styleClass>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </HBox>
+            <JFXButton prefHeight="44.0" prefWidth="52.0" text=" ">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Icons/notification-bell-outline-interface-symbol.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <ImageView fitHeight="52.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Icons/icons8-change-user-90.png" />
+               </image>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin></ImageView>
+            <Label prefHeight="39.0" prefWidth="98.0" text="Azlan Malik">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label prefHeight="18.0" prefWidth="23.0" />
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox prefHeight="698.0" prefWidth="258.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="150.0" text="Main Navigation">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Accordion>
+               <panes>
+                  <TitledPane alignment="CENTER" collapsible="false" ellipsisString="" expanded="false" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#displayNewInvoice" text="Dashboard">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </TitledPane>
+                  <TitledPane fx:id="productBtn" alignment="CENTER" depthTest="DISABLE" nodeOrientation="RIGHT_TO_LEFT" prefHeight="136.0" prefWidth="258.0" stylesheets="@../CSS/sideBar.css" text="Transaction">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="112.0" prefWidth="257.0">
+                           <children>
+                              <JFXButton layoutX="-2.0" layoutY="14.0" onAction="#displayTransactionView" prefHeight="40.0" prefWidth="258.0" text="View Transactions" translateY="-15.0">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton layoutX="-5.0" layoutY="54.0" onAction="#displayTransactionHistory" prefHeight="40.0" prefWidth="265.0" text="Transaction History" translateY="-15.0">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </JFXButton>
+                           </children></AnchorPane>
+                     </content>
+                  </TitledPane>
+                  <TitledPane fx:id="transactionBtn" alignment="CENTER" collapsible="false" expanded="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#displayCustomer" text="Customer">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </TitledPane>
+                  <TitledPane fx:id="stockBtn" maxHeight="312.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="0.0" prefWidth="258.0" text="Sales          ">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <content>
+                        <VBox prefHeight="78.0" prefWidth="257.0">
+                           <children>
+                              <JFXButton alignment="CENTER" onMouseClicked="#displayInvoice" prefHeight="43.0" prefWidth="217.0" scaleX="1.2" text="Invoices" translateX="1.0" translateY="-20.0">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton alignment="CENTER" onMouseClicked="#displayNewInvoice" prefHeight="43.0" prefWidth="236.0" scaleX="1.2" text="New Invoice" translateY="-20.0">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </VBox>
+                     </content>
+                  </TitledPane>
+                  <TitledPane fx:id="returnBtn" nodeOrientation="RIGHT_TO_LEFT" prefHeight="100.0" prefWidth="258.0" text="Stock          ">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <JFXButton onMouseClicked="#displayStock" prefHeight="78.0" prefWidth="217.0" scaleX="1.2" scaleY="1.1" text="Update Stock" translateY="-20.0">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton onMouseClicked="#displayStockHistory" prefHeight="48.0" prefWidth="217.0" scaleX="1.2" scaleY="1.1" text="Update History" translateY="-20.0">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </VBox>
+                     </content>
+                  </TitledPane>
+                  <TitledPane fx:id="reportBtn" alignment="CENTER" collapsible="false" expanded="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#displayProducts" stylesheets="@../CSS/sideBar.css" text="Product">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </TitledPane>
+                  <TitledPane fx:id="manageStaffBtn" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#displayReports" stylesheets="@../CSS/sideBar.css" text="Report         ">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </TitledPane>
+               </panes>
+            </Accordion>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>
