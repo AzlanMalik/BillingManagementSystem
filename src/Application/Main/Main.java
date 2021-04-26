@@ -10,6 +10,8 @@ import javafx.scene.input.MouseEvent;
 
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import jfxtras.styles.jmetro.JMetro;
+import jfxtras.styles.jmetro.Style;
 
 
 public class Main extends Application {
@@ -20,10 +22,16 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-       Parent root = FXMLLoader.load(getClass().getResource("/Application/FXML/login.fxml"));
-       primaryStage.initStyle(StageStyle.UNDECORATED);
+       Parent root = FXMLLoader.load(getClass().getResource("/Application/FXML/mainMenu.fxml"));
+      // primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+
+
+
+        scene.getStylesheets().add("/Application/CSS/MistSilver.css");
+
+        primaryStage.setScene(scene);
         primaryStage.show();
 
 

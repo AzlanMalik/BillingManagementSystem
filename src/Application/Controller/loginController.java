@@ -75,7 +75,9 @@ public class loginController implements Initializable {
             stage = new Stage();
             stage.setMinWidth(1130);
             stage.setMinHeight(810);
-            stage.setScene(new Scene(root));
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add("/Application/CSS/bootStrap3.css");
+            stage.setScene(scene);
             stage.show();
             } catch (IOException e) {
                 e.printStackTrace();

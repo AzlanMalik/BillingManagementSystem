@@ -49,6 +49,7 @@ public class mainMenuController implements Initializable {
 
     public void displayCustomer() throws IOException{
         customerPnl = FXMLLoader.load(getClass().getResource("/Application/FXML/viewCustomers.fxml"));
+       // customerPnl.getStylesheets().add("/Application/CSS/bootStrap3.css");
         borderPane.setCenter(customerPnl);
     }
 

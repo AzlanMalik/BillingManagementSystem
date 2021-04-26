@@ -10,5 +10,7 @@
     <orderEntry type="library" exported="" name="ojdbc8" level="project" />
     <orderEntry type="library" exported="" name="jfoenix-9.0.10" level="project" />
     <orderEntry type="library" exported="" name="controlsfx-8.40.14" level="project" />
+    <orderEntry type="library" name="jmetro-8.6.14" level="project" />
+    <orderEntry type="library" name="jmetro-11.6.14" level="project" />
   </component>
 </module>
