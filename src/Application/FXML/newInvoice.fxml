@@ -25,7 +25,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="730.0" prefWidth="941.0" stylesheets="@../CSS/win7.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controller.newInvoiceController">
+<BorderPane prefHeight="730.0" prefWidth="941.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controller.newInvoiceController">
    <top>
       <HBox prefHeight="234.0" prefWidth="882.0" spacing="10.0" BorderPane.alignment="CENTER_RIGHT">
          <children>

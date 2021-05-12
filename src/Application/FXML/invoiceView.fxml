@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="721.0" prefWidth="948.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="721.0" prefWidth="948.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controller.invoiceViewController">
    <children>
       <Label maxHeight="80.0" maxWidth="2000.0" prefHeight="80.0" prefWidth="948.0" style="-fx-background-color: white;" text="Invoice" VBox.vgrow="ALWAYS">
          <font>
@@ -56,10 +56,17 @@
             <Insets left="20.0" right="20.0" />
          </VBox.margin>
       </HBox>
-      <TableView maxHeight="800.0" prefHeight="346.0" prefWidth="908.0" VBox.vgrow="ALWAYS">
+      <TableView fx:id="invoiceTable" maxHeight="800.0" prefHeight="346.0" prefWidth="908.0" VBox.vgrow="ALWAYS">
         <columns>
-          <TableColumn prefWidth="150.3999900817871" text="C1" />
+          <TableColumn fx:id="idCol" prefWidth="70.0" text="Id" />
           <TableColumn minWidth="0.0" prefWidth="0.0" text="C2" />
+            <TableColumn fx:id="customerNameCol" prefWidth="164.0" text="Customer Name" />
+            <TableColumn fx:id="companyNameCol" prefWidth="200.00001525878906" text="Company Name" />
+            <TableColumn fx:id="dateCol" prefWidth="95.20001220703125" text="Date" />
+            <TableColumn fx:id="totalAmountCol" prefWidth="82.4000244140625" text="Total Amount" />
+            <TableColumn fx:id="paidAmountCol" prefWidth="89.60003662109375" text="Paid Amount" />
+            <TableColumn fx:id="salesmanNameCol" prefWidth="118.4000244140625" text="Salesman " />
+            <TableColumn fx:id="statusCol" prefWidth="88.0" text="Status" />
         </columns>
          <VBox.margin>
             <Insets bottom="10.0" left="20.0" right="20.0" />

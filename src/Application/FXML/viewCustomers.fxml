@@ -29,7 +29,7 @@
       </Separator>
       <HBox alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="908.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
          <children>
-            <Label contentDisplay="RIGHT" graphicTextGap="600.0" maxHeight="134.0" maxWidth="2000.0" prefHeight="134.0" prefWidth="682.0" style="-fx-background-color: white;" text="list Customers" HBox.hgrow="ALWAYS">
+            <Label contentDisplay="RIGHT" graphicTextGap="600.0" maxHeight="134.0" maxWidth="2000.0" prefHeight="46.0" prefWidth="642.0" style="-fx-background-color: white;" text="list Customers" HBox.hgrow="ALWAYS">
                <font>
                   <Font size="23.0" />
                </font>
@@ -37,12 +37,12 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <JFXButton onAction="#addNewClicked" prefHeight="36.0" prefWidth="111.0" text="Add New">
+            <JFXButton onAction="#addNewClicked" prefHeight="36.0" prefWidth="124.0" text="Add New">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
             </JFXButton>
-            <JFXButton onAction="#updateClicked" prefHeight="36.0" prefWidth="111.0" text="Update">
+            <JFXButton onAction="#updateClicked" prefHeight="36.0" prefWidth="115.0" text="Update">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
@@ -76,13 +76,12 @@
       </HBox>
       <TableView fx:id="table" maxHeight="800.0" prefHeight="472.0" prefWidth="908.0" VBox.vgrow="ALWAYS">
          <columns>
-            <TableColumn fx:id="idCol" text="ID" />
-            <TableColumn fx:id="nameCol" maxWidth="400.0" minWidth="200.0" prefWidth="200.0" text="Name" />
-            <TableColumn fx:id="companyNameCol" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="Company Name" />
-            <TableColumn minWidth="0.0" prefWidth="0.0" text="Column X" />
-            <TableColumn fx:id="cityCol" prefWidth="120.0" text="City" />
-            <TableColumn fx:id="previousBalanceCol" prefWidth="120.0" text="Previous Balance" />
-            <TableColumn fx:id="statusCol" minWidth="100.0" prefWidth="-1.0" text="Status" />
+            <TableColumn fx:id="idCol" prefWidth="59.999996185302734" text="ID" />
+            <TableColumn fx:id="nameCol" maxWidth="400.0" minWidth="168.7999725341797" prefWidth="188.80003356933594" text="Name" />
+            <TableColumn fx:id="companyNameCol" maxWidth="311.99993896484375" minWidth="100.0" prefWidth="240.79998779296875" text="Company Name" />
+            <TableColumn fx:id="cityCol" minWidth="0.0" prefWidth="120.0" text="City" />
+            <TableColumn fx:id="previousBalanceCol" prefWidth="118.39996337890625" text="Previous Balance" />
+            <TableColumn fx:id="phoneNoCol" minWidth="100.0" prefWidth="181.5999755859375" text="Phone No" />
          </columns>
          <VBox.margin>
             <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />

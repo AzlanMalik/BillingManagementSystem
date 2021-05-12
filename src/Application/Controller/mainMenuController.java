@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -34,7 +35,9 @@ public class mainMenuController implements Initializable {
         //MainMenu LeftPnl Actions
 
     public void displayDashboard() throws IOException{
-        dashboardPnl = FXMLLoader.load(getClass().getResource("/Application/FXML/dashboard.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Application/FXML/dashboard.fxml"));
+        dashboardPnl = loader.load();
         borderPane.setCenter(dashboardPnl);
     }
 
@@ -74,7 +77,7 @@ public class mainMenuController implements Initializable {
     }
 
     public void displayProducts() throws IOException{
-        productPnl = FXMLLoader.load(getClass().getResource("/Application/FXML/product.fxml"));
+        productPnl = FXMLLoader.load(getClass().getResource("/Application/FXML/productView.fxml"));
         borderPane.setCenter(productPnl);
     }
 

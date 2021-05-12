@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="721.0" prefWidth="948.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controller.stockController">
+<VBox prefHeight="721.0" prefWidth="948.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controller.stockUpdateController">
    <children>
       <Label maxHeight="80.0" maxWidth="2000.0" prefHeight="80.0" prefWidth="948.0" style="-fx-background-color: white;" text="Stock" VBox.vgrow="ALWAYS">
          <font>
@@ -126,10 +126,16 @@
             <Insets left="20.0" right="20.0" />
          </VBox.margin>
       </HBox>
-      <TableView maxHeight="800.0" prefHeight="346.0" prefWidth="908.0" VBox.vgrow="ALWAYS">
+      <TableView fx:id="stockTable" maxHeight="800.0" prefHeight="346.0" prefWidth="908.0" VBox.vgrow="ALWAYS">
         <columns>
-          <TableColumn prefWidth="150.3999900817871" text="C1" />
+          <TableColumn fx:id="idCol" prefWidth="70.0" text="Id" />
           <TableColumn minWidth="0.0" prefWidth="0.0" text="C2" />
+            <TableColumn fx:id="productNameCol" prefWidth="177.60002899169922" text="Product Name" />
+            <TableColumn fx:id="descriptionCol" prefWidth="269.6000671386719" text="Description" />
+            <TableColumn fx:id="stockCol" prefWidth="83.99993896484375" text="Stock" />
+            <TableColumn fx:id="priceCol" prefWidth="75.20001220703125" text="Price" />
+            <TableColumn fx:id="lastUpdateCol" prefWidth="123.99993896484375" text="Last Update" />
+            <TableColumn fx:id="statusCol" prefWidth="98.4000244140625" text="Status" />
         </columns>
          <VBox.margin>
             <Insets bottom="10.0" left="20.0" right="20.0" />

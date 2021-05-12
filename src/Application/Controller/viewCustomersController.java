@@ -1,9 +1,9 @@
 package Application.Controller;
 
-import Application.Service.loadCustomerService;
-import Application.Table.Person;
-import Application.Table.customer;
-import javafx.beans.property.SimpleObjectProperty;
+import Application.Controller.PopUp.newCustomerController;
+import Application.DAO.CustomerViewDAO;
+import Application.Model.Customer;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,136 +20,106 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.*;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class viewCustomersController implements Initializable {
 
     @FXML
-    private TableView<customer> table;
+    private TableView<Customer> table;
 
     @FXML
-    private TableColumn<customer,Integer> idCol;
+    private TableColumn<Customer,Integer> idCol;
 
     @FXML
-    private TableColumn<customer, String> nameCol;
+    private TableColumn<Customer, String> nameCol;
 
     @FXML
-    private TableColumn<customer, String> companyNameCol;
+    private TableColumn<Customer, String> companyNameCol;
 
     @FXML
-    private TableColumn<customer, String> cityCol;
+    private TableColumn<Customer, String> cityCol;
 
     @FXML
-    private TableColumn<customer, Integer> previousBalanceCol;
+    private TableColumn<Customer, Integer> previousBalanceCol;
 
     @FXML
-    private TableColumn<customer, String> statusCol;
+    private TableColumn<Customer, Long> phoneNoCol;
 
-    ObservableList<customer> list = FXCollections.observableArrayList();
+    ObservableList<Customer> list = FXCollections.observableArrayList();
 
     //Add New Stage Declaration for Close MEthod
     Stage stage;
+    Parent root = null;
+    FXMLLoader loader = null;
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        idCol.setCellValueFactory(new PropertyValueFactory<customer,Integer>("id"));
-        nameCol.setCellValueFactory(new PropertyValueFactory<customer,String>("name"));
-        companyNameCol.setCellValueFactory(new PropertyValueFactory<customer,String>("companyName"));
-        cityCol.setCellValueFactory(new PropertyValueFactory<customer,String>("city"));
-        previousBalanceCol.setCellValueFactory(new PropertyValueFactory<customer,Integer>("previousBalance"));
-        statusCol.setCellValueFactory(new PropertyValueFactory<customer,String>("status"));
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        companyNameCol.setCellValueFactory(new PropertyValueFactory<>("companyName"));
+        cityCol.setCellValueFactory(new PropertyValueFactory<>("city"));
+        previousBalanceCol.setCellValueFactory(new PropertyValueFactory<>("previousBalance"));
+        phoneNoCol.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
 
-        /////////loadData();
-        final loadCustomerService service = new loadCustomerService();
-        table.itemsProperty().bind(service.valueProperty());
-        service.start();
-
+        loadData();
 
     }
 
-    public void addNewClicked (ActionEvent event){
+    public viewCustomersController() {
 
-        try {
-            Parent frame = FXMLLoader.load(getClass().getResource("/Application/FXML/newCustomer.fxml"));
-            stage = new Stage();
-            stage.setScene(new Scene(frame));
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        new Thread(() -> {
+            try {
+                loader = new FXMLLoader((getClass().getResource("/Application/FXML/PopUp/newCustomer.fxml")));
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Platform.runLater(() -> {
+                stage = new Stage();
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add("/Application/CSS/MistSilver.css");
+                stage.setScene(scene);
+                stage.initModality(Modality.APPLICATION_MODAL);
+            });
+        }).start();
 
+    }
+
+    public void loadData(){
+        new Thread(() -> {
+            //CONNECT TO WEB AND LOG IN (ON OUT OF FX THREAD)
+
+            CustomerViewDAO dao = new CustomerViewDAO();
+
+            list = dao.getCustomerList();
+
+            //DO SOMETHING WITH CONTROLLS ON FX THREAD ACCORDING RESULT OF OVER
+            Platform.runLater(() -> {
+                System.out.println("working");
+                table.getItems().addAll(list);
+            });
+        }).start();
+
+    }
+
+    public void addNewClicked(ActionEvent event){
+        newCustomerController controller = loader.getController();
+        controller.clearStage();
+        stage.show();
     }
 
     public void updateClicked(ActionEvent event){
-        if(!table.getSelectionModel().isCellSelectionEnabled()) {
-            System.out.println("No Customer is Selected");
-            return;
-        }
+        Customer customer = table.getSelectionModel().getSelectedItem();
 
-        customer updateCustomer = table.getSelectionModel().getSelectedItem();
-        try {
-            FXMLLoader loader = new FXMLLoader((getClass().getResource("/Application/FXML/newCustomer.fxml")));
-            Parent frame = loader.load();
-            stage = new Stage();
-            stage.setScene(new Scene(frame));
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.show();
+        if(customer != null){
             newCustomerController controller = loader.getController();
-            controller.loadData(updateCustomer.getId());
-        } catch (IOException e) {
-            e.printStackTrace();
+            controller.loadData(customer.getId());
+            stage.show();
         }
     }
-
-
-    /*     using services now
-    public void loadData(){
-
-        try {
-            list.clear();
-
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-
-
-            Connection con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","12345678900Ab");
-
-
-            Statement stmt=con.createStatement();
-
-            String sql = "Select customer_id,customer_name,customer_companyName,customer_city,customer_previousBalance from Customer_Table";
-            ResultSet rs=stmt.executeQuery(sql);
-
-
-            while (rs.next()){
-
-                list.add(new customer(
-                        rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getInt(5),
-                        "T"     //rs.getString(6)
-                ));
-
-                table.setItems(list);
-
-            }
-
-            con.close();
-
-
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(testController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-
-
-    }*/
-
 
 }
