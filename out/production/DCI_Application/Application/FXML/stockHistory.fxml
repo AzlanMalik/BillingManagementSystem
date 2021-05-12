@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="721.0" prefWidth="948.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controller.StockHistoryController">
+   <children>
+      <Label maxHeight="80.0" maxWidth="2000.0" prefHeight="80.0" prefWidth="948.0" style="-fx-background-color: white;" text="Stock History" VBox.vgrow="ALWAYS">
+         <font>
+            <Font size="33.0" />
+         </font>
+         <padding>
+            <Insets left="25.0" />
+         </padding>
+      </Label>
+      <Separator prefHeight="3.0" prefWidth="948.0" VBox.vgrow="ALWAYS">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </Separator>
+      <Label contentDisplay="TOP" maxHeight="60.0" maxWidth="2000.0" prefHeight="60.0" prefWidth="908.0" style="-fx-background-color: white;" text="Filter By " VBox.vgrow="ALWAYS">
+         <font>
+            <Font size="23.0" />
+         </font>
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </Label>
+      <Separator prefHeight="22.0" prefWidth="908.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
+      </Separator>
+      <HBox alignment="CENTER" maxHeight="80.0" prefHeight="80.0" prefWidth="908.0" style="-fx-background-color: white;" VBox.vgrow="ALWAYS">
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+         <children>
+            <TextField maxWidth="700.0" prefHeight="40.0" prefWidth="510.0" HBox.hgrow="ALWAYS" />
+            <ComboBox maxWidth="200.0" prefHeight="40.0" prefWidth="186.0" HBox.hgrow="ALWAYS" />
+            <JFXButton buttonType="RAISED" maxWidth="140.0" prefHeight="40.0" prefWidth="126.0" text="Search" HBox.hgrow="ALWAYS" />
+         </children>
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
+      </HBox>
+      <TableView fx:id="stockHistoryTable" maxHeight="800.0" prefHeight="346.0" prefWidth="908.0" VBox.vgrow="ALWAYS">
+        <columns>
+          <TableColumn minWidth="0.0" prefWidth="0.0" text="C2" />
+            <TableColumn fx:id="updateIdCol" prefWidth="75.20001220703125" text="Update Id" />
+            <TableColumn fx:id="productNameCol" prefWidth="173.59996032714844" text="Product Name" />
+            <TableColumn fx:id="descriptionCol" prefWidth="223.99993896484375" text="Description" />
+            <TableColumn fx:id="quantityCol" minWidth="0.0" prefWidth="125.5999755859375" text="Quantity" />
+            <TableColumn fx:id="updateDateCol" prefWidth="149.60003662109375" text="Update Date" />
+            <TableColumn fx:id="manufacturerCol" prefWidth="156.800048828125" text="Manufacturer" />
+        </columns>
+         <VBox.margin>
+            <Insets bottom="10.0" left="20.0" right="20.0" />
+         </VBox.margin>
+      </TableView>
+   </children>
+</VBox>

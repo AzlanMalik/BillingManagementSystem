@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1110.0" stylesheets="@../CSS/MistSilver.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controller.mainMenuController">
+   <center>
+      <AnchorPane minHeight="680.0" minWidth="780.0" prefHeight="680.0" prefWidth="780.0" stylesheets="@../CSS/MistSilver.css" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <HBox alignment="CENTER_LEFT" onMouseClicked="#displayDashboard" prefHeight="61.0" prefWidth="1002.0" styleClass="upper_panel" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="86.0" fitWidth="256.0" pickOnBounds="true">
+               <image>
+                  <Image url="file:/F:/Projects/DCI_Application/src/Application/Icons/billsoft_1.jpg" />
+               </image>
+            </ImageView>
+            <Separator orientation="VERTICAL" prefHeight="62.0" prefWidth="0.0" scaleY="1.2" />
+            <Label maxWidth="1000.0" prefHeight="70.0" prefWidth="110.0" HBox.hgrow="ALWAYS" />
+            <TextField focusTraversable="false" prefHeight="34.0" prefWidth="210.0" promptText="  Search Customer..." styleClass="round_textfield">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <ImageView fitHeight="25.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+               <image>
+                  <Image url="@../Icons/searchIcon.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="10.0" right="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <JFXButton alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="54.0" styleClass="custom_button" text=" ">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="file:/F:/Projects/DCI_Application/src/Application/Icons/notification-bell-outline-interface-symbol.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <ImageView fitHeight="41.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="file:/F:/Projects/DCI_Application/src/Application/Icons/user.png" />
+               </image></ImageView>
+            <Label prefHeight="39.0" prefWidth="98.0" text="Azlan Malik">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label prefHeight="18.0" prefWidth="23.0" />
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox prefHeight="674.0" prefWidth="257.0" styleClass="side_panel" BorderPane.alignment="CENTER">
+         <children>
+            <Label contentDisplay="CENTER" prefHeight="45.0" prefWidth="257.0" styleClass="side_panellabel" text="  Main Navigation">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Accordion>
+               <panes>
+                  <TitledPane alignment="CENTER" collapsible="false" ellipsisString="" expanded="false" graphicTextGap="0.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#displayNewInvoice" prefHeight="0.0" prefWidth="258.0" text="Dashboard">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" translateX="-30.0">
+                           <image>
+                              <Image url="@../Icons/dashboard.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </TitledPane>
+                  <TitledPane fx:id="productBtn" alignment="CENTER" contentDisplay="RIGHT" depthTest="DISABLE" graphicTextGap="20.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="184.0" prefWidth="262.0" stylesheets="@../CSS/sideBar.css" text="Transaction">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <content>
+                        <VBox alignment="TOP_CENTER" prefHeight="123.0" prefWidth="235.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" onMouseClicked="#displayTransactionView" prefHeight="35.0" prefWidth="142.0" text="View Transactions" translateY="-15.0">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" onMouseClicked="#displayTransactionHistory" prefHeight="35.0" prefWidth="142.0" styleClass="sidebar_label" text="Transaction History" translateY="-10.0">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </content>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="18.0">
+                           <image>
+                              <Image url="file:/F:/Projects/DCI_Application/src/Application/Icons/transaction.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </TitledPane>
+                  <TitledPane fx:id="transactionBtn" alignment="CENTER" collapsible="false" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#displayCustomer" text="Customer">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="33.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" translateX="35.0">
+                           <image>
+                              <Image url="file:/F:/Projects/DCI_Application/src/Application/Icons/customer.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </TitledPane>
+                  <TitledPane fx:id="stockBtn" contentDisplay="RIGHT" maxHeight="312.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="0.0" prefWidth="258.0" text="Sales          ">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <content>
+                        <VBox alignment="CENTER" prefHeight="78.0" prefWidth="257.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" onMouseClicked="#displayInvoice" prefHeight="26.0" prefWidth="85.0" styleClass="sidebar_label" text="Invoices" translateY="-15.0">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" onMouseClicked="#displayNewInvoice" prefHeight="27.0" prefWidth="93.0" styleClass="sidebar_label" text="New Invoice" translateY="-10.0">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </content>
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true" translateX="45.0">
+                           <image>
+                              <Image url="@../Icons/sales.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </TitledPane>
+                  <TitledPane fx:id="returnBtn" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="100.0" prefWidth="258.0" text="Stock          ">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <content>
+                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" onMouseClicked="#displayStock" prefHeight="27.0" prefWidth="112.0" styleClass="sidebar_label" text="Update Stock" translateY="-15.0">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" onMouseClicked="#displayStockHistory" prefHeight="26.0" prefWidth="113.0" styleClass="sidebar_label" text="Update History" translateY="-10.0">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </content>
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" translateX="40.0">
+                           <image>
+                              <Image url="file:/F:/Projects/DCI_Application/src/Application/Icons/stock.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </TitledPane>
+                  <TitledPane fx:id="reportBtn" alignment="CENTER" collapsible="false" contentDisplay="RIGHT" expanded="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#displayProducts" stylesheets="@../CSS/sideBar.css" text="Product">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" translateX="45.0">
+                           <image>
+                              <Image url="file:/F:/Projects/DCI_Application/src/Application/Icons/product.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </TitledPane>
+                  <TitledPane fx:id="manageStaffBtn" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#displayReports" stylesheets="@../CSS/sideBar.css" text="Report         ">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0" />
+                     </content>
+                     <graphic>
+                        <ImageView fitHeight="33.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" translateX="30.0">
+                           <image>
+                              <Image url="file:/F:/Projects/DCI_Application/src/Application/Icons/reports.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </TitledPane>
+               </panes>
+            </Accordion>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>
