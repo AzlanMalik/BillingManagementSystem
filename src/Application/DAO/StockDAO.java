@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class StockDAO {
     private Connection connection;
@@ -25,7 +26,7 @@ public class StockDAO {
 
             connection= ConnectionFactory.getConnection();
 
-            String query = "Select P.product_id, P.product_name, P.product_description, PS.product_quantity, PS.product_price, P.product_date , PS.product_status  From Product_Table P  Inner Join Product_Stock PS  ON P.product_id = PS.product_id ";
+            String query = "Select product_id, product_name, product_description, product_quantity, product_price, product_date , product_status  From Product_Table  ";
 
             stmt = connection.createStatement();
             rs = stmt.executeQuery(query);
@@ -52,6 +53,78 @@ public class StockDAO {
         return productStockList;
 
     }
+
+    public void updateStock(String productName, String manufacturer, int quantity){
+    try{
+        connection = ConnectionFactory.getConnection();
+
+        String query = "Insert into StockUpdate_Table(product_id,stockUpdate_quantity,manufacturer_name)" +
+                " Values((Select product_id From product_table where product_name = ?),?,?)";
+
+        pst = connection.prepareStatement(query);
+        pst.setString(1,productName);
+        pst.setInt(2,quantity);
+        pst.setString(3,manufacturer);
+        pst.executeQuery();
+
+    } catch (SQLException throwables) {
+        throwables.printStackTrace();
+    }
+    }
+
+
+
+    //////
+
+    public ArrayList<String> getProductName(){
+        ArrayList<String> productName = new ArrayList<>();
+        try{
+            connection = ConnectionFactory.getConnection();
+
+            String query = "Select product_name From Product_Table ";
+
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery(query);
+
+            while(rs.next()){
+                productName.add(rs.getString(1));
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }finally{
+            closeConnection();
+        }
+        return productName;
+    }
+
+
+
+
+
+    public ArrayList<String> getManufacturerName(){
+        ArrayList<String> manufacturerName = new ArrayList<>();
+        try{
+            connection = ConnectionFactory.getConnection();
+
+            String query = "Select manufacturer_name From Manufacturer_Table ";
+
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery(query);
+
+            while(rs.next()){
+                manufacturerName.add(rs.getString(1));
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }finally{
+            closeConnection();
+        }
+        return manufacturerName;
+    }
+
+
 
     ////////
     private String getStatus(int status){

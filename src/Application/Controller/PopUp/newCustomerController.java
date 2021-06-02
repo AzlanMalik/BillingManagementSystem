@@ -1,14 +1,19 @@
 package Application.Controller.PopUp;
 
+import Application.DAO.CustomerViewDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.sql.*;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class newCustomerController {
+
+public class newCustomerController implements Initializable {
 
 
     @FXML
@@ -38,43 +43,80 @@ public class newCustomerController {
     @FXML
     private Button closeBtn;
 
+    @FXML
+    private Button saveBtn;
+
+    @FXML
+    private Label headingLbl;
+
+    CustomerViewDAO dao;
+
+
+    Boolean saveStatus = false;
+    int custId ;
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+         dao = new CustomerViewDAO();
+
+    }
+
+
+    public void updateView(Boolean status) {
+        saveStatus = status;
+        if(status == true){
+            headingLbl.setText("Update Customer");
+            saveBtn.setText("Save");
+        }else{
+            headingLbl.setText("New Customer");
+            saveBtn.setText("Add");
+        }
+    }
+
+
     public void closeClicked(ActionEvent event){
         Stage stage = (Stage) closeBtn.getScene().getWindow();
         stage.close();
     }
 
-    public void loadData(int id) {
-        try {
+    public void saveButtonClicked(ActionEvent event){
 
-            Class.forName("oracle.jdbc.driver.OracleDriver");
+        String[] customerData = new String[8];
+        customerData[0] = nameTxt.getText();
+        customerData[1] = companyNameTxt.getText();
+        customerData[2] = addressTxt.getText();
+        customerData[3] = cityTxt.getText();
+        customerData[4] = stateTxt.getText();
+        customerData[5] = phoneNo1Txt.getText();
+        customerData[6] = phoneNo2Txt.getText();
+        customerData[7] = previousBalanceTxt.getText();
 
-            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "12345678900Ab");
-
-            Statement stmt = con.createStatement();
-
-            String sql = "Select * from Customer_Table where customer_id = "+ id;
-            ResultSet rs = stmt.executeQuery(sql);
-
-
-            while (rs.next()) {
-
-               nameTxt.setText(rs.getString(2));
-                companyNameTxt.setText(rs.getString(3));
-                addressTxt.setText(rs.getString(4));
-                cityTxt.setText(rs.getString(5));
-                stateTxt.setText(rs.getString(6));
-                phoneNo1Txt.setText(rs.getString(7));
-                phoneNo2Txt.setText(rs.getString(8));
-                previousBalanceTxt.setText(rs.getString(9));
-
-            }
-
-            con.close();
-
-
-        } catch (SQLException | ClassNotFoundException ex) {
-
+        if(saveStatus == false)
+            dao.addNewCustomer(customerData);
+        else{
+            dao.updateCustomer(customerData,custId);
         }
+    }
+
+
+    public void loadData(int id) {
+
+        custId = id;
+
+        String[] customerData = dao.getCustomerData(id);
+
+        nameTxt.setText(customerData[0]);
+        companyNameTxt.setText( customerData[1]);
+        addressTxt.setText( customerData[2]);
+        cityTxt.setText( customerData[3]);
+        stateTxt.setText( customerData[4]);
+        phoneNo1Txt.setText( customerData[5]);
+        phoneNo2Txt.setText( customerData[6]);
+        previousBalanceTxt.setText( customerData[7]);
+
+
     }
 
     public void clearStage(){
@@ -88,7 +130,6 @@ public class newCustomerController {
         previousBalanceTxt.setText(null);
     }
 
-    public void addClicked(ActionEvent event){
-        System.out.println("new Customer Added");
-    }
+
+
 }

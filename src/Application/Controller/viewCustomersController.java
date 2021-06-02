@@ -73,7 +73,7 @@ public class viewCustomersController implements Initializable {
 
         new Thread(() -> {
             try {
-                loader = new FXMLLoader((getClass().getResource("/Application/FXML/PopUp/newCustomer.fxml")));
+                loader = new FXMLLoader((getClass().getResource("/Application/View/PopUp/newCustomer.fxml")));
                 root = loader.load();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -108,6 +108,7 @@ public class viewCustomersController implements Initializable {
 
     public void addNewClicked(ActionEvent event){
         newCustomerController controller = loader.getController();
+        controller.updateView(false);
         controller.clearStage();
         stage.show();
     }
@@ -117,6 +118,7 @@ public class viewCustomersController implements Initializable {
 
         if(customer != null){
             newCustomerController controller = loader.getController();
+            controller.updateView(true);
             controller.loadData(customer.getId());
             stage.show();
         }

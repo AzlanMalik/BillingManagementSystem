@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,6 +21,7 @@ public class mainMenuController implements Initializable {
     private Parent productPnl;
     private Parent dashboardPnl;
     private Parent transactionViewPnl;
+    private Parent transactionHistoryPnl;
     private Parent invoiceViewPnl;
     private Parent stockViewPnl;
     private Parent stockHistoryPnl;
@@ -36,48 +36,49 @@ public class mainMenuController implements Initializable {
 
     public void displayDashboard() throws IOException{
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Application/FXML/dashboard.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Application/View/dashboard.fxml"));
         dashboardPnl = loader.load();
         borderPane.setCenter(dashboardPnl);
     }
 
     public void displayTransactionView() throws IOException{
-        transactionViewPnl = FXMLLoader.load(getClass().getResource("/Application/FXML/transactionView.fxml"));
+        transactionViewPnl = FXMLLoader.load(getClass().getResource("/Application/View/transactionView.fxml"));
         borderPane.setCenter(transactionViewPnl);
     }
 
     public void displayTransactionHistory() throws IOException{
-        System.out.println("Not Build Yet!");
+        transactionHistoryPnl = FXMLLoader.load(getClass().getResource("/Application/View/transactionHistory.fxml"));
+        borderPane.setCenter(transactionHistoryPnl);
     }
 
     public void displayCustomer() throws IOException{
-        customerPnl = FXMLLoader.load(getClass().getResource("/Application/FXML/viewCustomers.fxml"));
+        customerPnl = FXMLLoader.load(getClass().getResource("/Application/View/viewCustomers.fxml"));
        // customerPnl.getStylesheets().add("/Application/CSS/bootStrap3.css");
         borderPane.setCenter(customerPnl);
     }
 
     public void displayInvoice() throws IOException{
-        invoiceViewPnl = FXMLLoader.load(getClass().getResource("/Application/FXML/invoiceView.fxml"));
+        invoiceViewPnl = FXMLLoader.load(getClass().getResource("/Application/View/invoiceView.fxml"));
         borderPane.setCenter(invoiceViewPnl);
     }
 
     public void displayNewInvoice() throws IOException{
-        newInvoicePnl =  FXMLLoader.load(getClass().getResource("/Application/FXML/newInvoice.fxml"));
+        newInvoicePnl =  FXMLLoader.load(getClass().getResource("/Application/View/newInvoice.fxml"));
         borderPane.setCenter(newInvoicePnl);
     }
 
     public void displayStock() throws IOException{
-        stockViewPnl = FXMLLoader.load(getClass().getResource("/Application/FXML/stockView.fxml"));
+        stockViewPnl = FXMLLoader.load(getClass().getResource("/Application/View/stockView.fxml"));
         borderPane.setCenter(stockViewPnl);
     }
 
     public void displayStockHistory() throws IOException{
-        stockHistoryPnl = FXMLLoader.load(getClass().getResource("/Application/FXML/stockHistory.fxml"));
+        stockHistoryPnl = FXMLLoader.load(getClass().getResource("/Application/View/stockHistory.fxml"));
         borderPane.setCenter(stockHistoryPnl);
     }
 
     public void displayProducts() throws IOException{
-        productPnl = FXMLLoader.load(getClass().getResource("/Application/FXML/productView.fxml"));
+        productPnl = FXMLLoader.load(getClass().getResource("/Application/View/productView.fxml"));
         borderPane.setCenter(productPnl);
     }
 

@@ -10,7 +10,6 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 
 public class Main extends Application {
@@ -21,7 +20,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-       Parent root = FXMLLoader.load(getClass().getResource("/Application/FXML/mainMenu.fxml"));
+       Parent root = FXMLLoader.load(getClass().getResource("/Application/View/mainMenu.fxml"));
         //primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setTitle("Bill Soft");
         Scene scene = new Scene(root);

@@ -18,7 +18,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.*;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -77,12 +76,13 @@ public class transactionViewController implements Initializable {
 
 
 
+
         loadData();
     }
 
     public void newDepositClicked(ActionEvent event){
         try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Application/FXML/PopUp/newTransaction.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Application/View/PopUp/newTransaction.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
             Scene scene = new Scene(root);

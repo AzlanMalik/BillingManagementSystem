@@ -8,8 +8,8 @@ public class ConnectionFactory {
 
     private static Connection connection = null;
 
-    private static final String USER = "system";
-    private static final String PASS = "12345678900Ab";
+    private static final String USER = "dci";
+    private static final String PASS = "shahabuddin";
     private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
     private static final String driver = "oracle.jdbc.driver.OracleDriver";
 

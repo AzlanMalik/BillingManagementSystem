@@ -73,7 +73,7 @@ public class loginController implements Initializable {
     public void loadStage(){
         new Thread(() -> {
             try {
-                loader = new FXMLLoader(getClass().getResource("/Application/FXML/mainMenu.fxml"));
+                loader = new FXMLLoader(getClass().getResource("/Application/View/mainMenu.fxml"));
                 root = loader.load();
             } catch (IOException e) {
                 e.printStackTrace();

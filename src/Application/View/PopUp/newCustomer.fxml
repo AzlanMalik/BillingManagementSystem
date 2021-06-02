@@ -2,8 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
@@ -11,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controller.PopUp.newTransactionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controller.PopUp.newCustomerController">
    <children>
-      <Label layoutX="-1.0" layoutY="-1.0" prefHeight="89.0" prefWidth="771.0" text="New Transaction">
+      <Label fx:id="headingLbl" layoutX="-1.0" layoutY="-1.0" prefHeight="89.0" prefWidth="771.0" text="New Customer">
          <font>
             <Font name="Segoe UI Bold" size="37.0" />
          </font>
@@ -23,12 +21,12 @@
       </Label>
       <VBox layoutX="38.0" layoutY="118.0" prefHeight="458.0" prefWidth="360.0">
          <children>
-            <Label prefHeight="45.0" text="Invoice Id">
+            <Label prefHeight="45.0" text="Full Name">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="invoiceId" onAction="#getData" prefHeight="45.0">
+            <TextField fx:id="nameTxt" prefHeight="45.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -36,12 +34,12 @@
                   <Insets bottom="15.0" />
                </VBox.margin>
             </TextField>
-            <Label prefHeight="45.0" text="Company Name">
+            <Label prefHeight="45.0" text="Address">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="companyName" editable="false" prefHeight="45.0">
+            <TextField fx:id="addressTxt" prefHeight="45.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -49,12 +47,12 @@
                   <Insets bottom="15.0" />
                </VBox.margin>
             </TextField>
-            <Label prefHeight="45.0" text="Remaining Amount">
+            <Label prefHeight="45.0" text="State">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="remainingAmount" editable="false" prefHeight="45.0">
+            <TextField fx:id="stateTxt" prefHeight="45.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -62,12 +60,12 @@
                   <Insets bottom="15.0" />
                </VBox.margin>
             </TextField>
-            <Label prefHeight="45.0" text="Paid">
+            <Label prefHeight="45.0" text="Previous Balance">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="paidAmount" prefHeight="45.0" promptText="e.g 2000">
+            <TextField fx:id="previousBalanceTxt" prefHeight="45.0" promptText="Optional">
                <font>
                   <Font size="20.0" />
                </font>
@@ -77,14 +75,14 @@
             </TextField>
          </children>
       </VBox>
-      <VBox layoutX="442.0" layoutY="117.0" prefHeight="458.0" prefWidth="360.0">
+      <VBox layoutX="440.0" layoutY="111.0" prefHeight="458.0" prefWidth="360.0">
          <children>
-            <Label prefHeight="45.0" text="Customer Name">
+            <Label prefHeight="45.0" text="Company">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="customerName" editable="false" prefHeight="45.0">
+            <TextField fx:id="companyNameTxt" prefHeight="45.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -97,42 +95,45 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="city" editable="false" prefHeight="45.0">
+            <TextField fx:id="cityTxt" prefHeight="45.0">
                <VBox.margin>
                   <Insets bottom="15.0" />
                </VBox.margin>
-               <font>
-                  <Font size="20.0" />
-               </font>
             </TextField>
-            <Label prefHeight="45.0" text="Salesman">
+            <Label prefHeight="45.0" text="Phone No">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <ComboBox fx:id="salesman" prefHeight="46.0" prefWidth="372.0">
+            <TextField fx:id="phoneNo1Txt" prefHeight="45.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
                <VBox.margin>
                   <Insets bottom="15.0" />
                </VBox.margin>
-            </ComboBox>
-            <Label prefHeight="45.0" text="Date">
+            </TextField>
+            <Label prefHeight="45.0" text="Telephone No">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <DatePicker prefHeight="46.0" prefWidth="411.0">
+            <TextField fx:id="phoneNo2Txt" prefHeight="45.0" promptText="Optional">
+               <font>
+                  <Font size="20.0" />
+               </font>
                <VBox.margin>
                   <Insets bottom="15.0" />
                </VBox.margin>
-            </DatePicker>
+            </TextField>
          </children>
       </VBox>
-      <Separator layoutX="1.0" layoutY="62.0" prefHeight="2.0" prefWidth="833.0" />
-      <JFXButton buttonType="RAISED" layoutX="49.0" layoutY="580.0" prefHeight="60.0" prefWidth="150.0" text="Record">
+      <Separator layoutX="1.0" layoutY="62.0" prefHeight="0.0" prefWidth="834.0" />
+      <JFXButton fx:id="saveBtn" buttonType="RAISED" layoutX="49.0" layoutY="580.0" onAction="#saveButtonClicked" prefHeight="60.0" prefWidth="150.0" text="Add">
          <font>
             <Font name="Segoe UI" size="22.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="closeBtn" layoutX="770.0" layoutY="22.0" prefHeight="35.0" prefWidth="46.0" text="X" />
+      <JFXButton fx:id="closeBtn" layoutX="770.0" layoutY="22.0" onAction="#closeClicked" prefHeight="35.0" prefWidth="46.0" text="X" />
    </children>
 </AnchorPane>

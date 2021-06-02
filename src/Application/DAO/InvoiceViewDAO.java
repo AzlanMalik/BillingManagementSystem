@@ -25,7 +25,7 @@ public class InvoiceViewDAO {
         try {
             connection = ConnectionFactory.getConnection();
 
-            String query = "Select I.invoice_id, C.customer_name, C.customer_companyName, I.invoice_date, I.invoice_total, I.invoice_paidAmount, S.salesman_name, I.invoice_status  From Invoice_Table I  Inner Join Customer_Table C ON I.customer_id = C.customer_id  Join Salesman_Table S  ON I.salesman_id = S.salesman_id";
+            String query = "Select I.invoice_id, C.customer_name, C.customer_companyName, I.invoice_date, I.invoice_totalAmount, I.invoice_paidAmount, S.salesman_name, I.invoice_status  From Invoice_Table I  Inner Join Customer_Table C ON I.customer_id = C.customer_id  Join Salesman_Table S  ON I.salesman_id = S.salesman_id";
 
              stmt = connection.createStatement();
              rs = stmt.executeQuery(query);

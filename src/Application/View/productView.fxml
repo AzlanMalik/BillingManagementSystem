@@ -32,7 +32,7 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <JFXButton buttonType="RAISED" prefHeight="36.0" prefWidth="111.0" text="Add New">
+            <JFXButton buttonType="RAISED" onAction="#addNewProductClicked" prefHeight="36.0" prefWidth="122.0" text="Add New">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
@@ -59,13 +59,13 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="40.0" prefWidth="500.0" />
-                  <Label prefHeight="35.0" prefWidth="500.0" text="Qty/Box">
+                  <TextField fx:id="productNameTxt" prefHeight="40.0" prefWidth="500.0" />
+                  <Label prefHeight="35.0" prefWidth="500.0" text="Quantity">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="40.0" prefWidth="500.0" />
+                  <TextField fx:id="quantityTxt" prefHeight="40.0" prefWidth="500.0" />
                </children>
                <HBox.margin>
                   <Insets left="20.0" right="20.0" />
@@ -78,13 +78,13 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="40.0" prefWidth="500.0" />
+                  <TextField fx:id="priceTxt" prefHeight="40.0" prefWidth="500.0" />
                   <Label prefHeight="35.0" prefWidth="500.0" text="Description">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="40.0" prefWidth="500.0" />
+                  <TextField fx:id="descriptionTxt" prefHeight="40.0" prefWidth="500.0" />
                </children>
                <HBox.margin>
                   <Insets left="20.0" right="20.0" />

@@ -16,6 +16,7 @@ public class Transaction {
 
 
     public Transaction(int invoiceId, String customerName, String companyName, String city, int amount,int paid, LocalDate dueDate,int dueBalance, String salesman, String status) {
+
         this.invoiceId = new SimpleIntegerProperty(invoiceId);
         this.customerName = new SimpleStringProperty(customerName);
         this.companyName = new SimpleStringProperty(companyName);
@@ -26,9 +27,6 @@ public class Transaction {
         this.dueDate = new SimpleObjectProperty<>(dueDate);
         this.salesman = new SimpleStringProperty(salesman);
         this.status = new SimpleStringProperty(status);
-
-
-
     }
 
     public String getCustomerName() {

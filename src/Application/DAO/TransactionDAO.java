@@ -5,8 +5,12 @@ import Application.connection.ConnectionFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.sql.*;
-import java.time.format.DateTimeFormatter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+
+import static java.lang.Integer.parseInt;
 
 public class TransactionDAO {
     private Connection connection;
@@ -27,7 +31,7 @@ public class TransactionDAO {
 
              connection= ConnectionFactory.getConnection();
 
-            String query = "Select I.invoice_id,C.customer_name,C.customer_companyName,C.customer_city,I.invoice_total,I.invoice_paidAmount,I.invoice_dueDate,C.customer_previousBalance, S.Salesman_name ,I.invoice_status  From Invoice_Table I  Inner Join Customer_Table C  ON  I.customer_id =  C.customer_id Join Salesman_Table S ON I.Salesman_id = S.Salesman_id Where invoice_Status = 0";
+            String query = "Select I.invoice_id,C.customer_name,C.customer_companyName,C.customer_city,I.invoice_totalAmount,I.invoice_paidAmount,I.invoice_dueDate,C.customer_previousBalance, S.Salesman_name ,I.invoice_status  From Invoice_Table I  Inner Join Customer_Table C  ON  I.customer_id =  C.customer_id Join Salesman_Table S ON I.Salesman_id = S.Salesman_id Where invoice_Status = 0";
 
             stmt = connection.createStatement();
             rs = stmt.executeQuery(query);
@@ -63,22 +67,20 @@ public class TransactionDAO {
         try {
             connection = ConnectionFactory.getConnection();
 
-            String query = "Select C.customer_name, C.customer_companyName, C.customer_city, I.invoice_total, S.Salesman_name From Invoice_Table I Join Customer_Table C ON I.customer_id = C.Customer_id  Join Salesman_Table S ON I.salesman_id = S.salesman_id   where I.invoice_id = ? ";
+            String query = "Select C.customer_name, C.customer_companyName, C.customer_city, I.invoice_totalAmount-I.invoice_paidAmount, S.Salesman_name From Invoice_Table I Join Customer_Table C ON I.customer_id = C.Customer_id  Join Salesman_Table S ON I.salesman_id = S.salesman_id   where I.invoice_id = ? ";
 
             pst = connection.prepareStatement(query);
             pst.setString(1,id);
 
             rs = pst.executeQuery();
 
-            while(rs.next()){
-            data[0] = rs.getString(1);
-            data[1] = rs.getString(2);
-            data[2] = rs.getString(3);
-            data[3] = rs.getString(4);
-            data[4] = rs.getString(5);
+            while(rs.next()) {
+                data[0] = rs.getString(1);
+                data[1] = rs.getString(2);
+                data[2] = rs.getString(3);
+                data[3] = rs.getString(4);
+                data[4] = rs.getString(5);
             }
-
-            connection.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -104,8 +106,6 @@ public class TransactionDAO {
                salesmanList.add(rs.getString(1));
             }
 
-            connection.close();
-
         } catch (SQLException e) {
             e.printStackTrace();
         }finally{
@@ -117,8 +117,63 @@ public class TransactionDAO {
     }
 
 
+    ///// Deposit Methods
+
+    public void addDeposit(String[] dataArray){
+        try {
+
+            connection= ConnectionFactory.getConnection();
+
+            int salesmanId = 0;
+            String sql = "select Salesman_id From Salesman_Table where salesman_name = ?";
+            pst = connection.prepareStatement(sql);
+            pst.setString(1,dataArray[1]);
+            rs = pst.executeQuery();
+            while(rs.next()){
+                salesmanId = rs.getInt(1);
+            }
+
+            System.out.println(salesmanId);
+
+            String query = "Insert Into Transaction_Table T  (T.invoice_id, T.salesman_id, T.transaction_amount)  Values(?,?,?) ";
+            pst = connection.prepareStatement(query);
+            pst.setInt(1,parseInt(dataArray[0]));
+            //pst.setString(2,dataArray[1]);
+            pst.setInt(2,salesmanId);
+            pst.setInt(3,parseInt(dataArray[2]));
+          //  pst.setString(4,dataArray[3]);
+            pst.executeQuery();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            closeConnection();
+        }
+    }
+
+
 
     ////// Methods
+
+    public LocalDate getDate(){
+        LocalDate date = null;
+        try{
+            connection = ConnectionFactory.getConnection();
+
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery("Select sysdate From Invoice_Table ");
+
+            while (rs.next()) {
+                date = rs.getDate(1).toLocalDate();
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }finally{
+            closeConnection();
+        }
+    return date;
+    }
 
     private String getStatus(int status){
         if(status == 0) {

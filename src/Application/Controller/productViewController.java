@@ -9,14 +9,28 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+
+import javafx.event.ActionEvent;
 import java.net.URL;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class productViewController implements Initializable {
+
+    @FXML
+    private TextField productNameTxt;
+
+    @FXML
+    private TextField quantityTxt;
+
+    @FXML
+    private TextField priceTxt;
+
+    @FXML
+    private TextField descriptionTxt;
 
     @FXML
     private TableView<Product> productTable;
@@ -44,6 +58,7 @@ public class productViewController implements Initializable {
 
 
     ///
+    ProductViewDAO dao = new ProductViewDAO();
     ObservableList<Product> list = FXCollections.observableArrayList();
 
     @Override
@@ -66,7 +81,7 @@ public class productViewController implements Initializable {
         new Thread(() -> {
             //CONNECT TO WEB AND LOG IN (ON OUT OF FX THREAD)
 
-            ProductViewDAO dao = new ProductViewDAO();
+
             list = dao.getProductList();
 
 
@@ -78,4 +93,16 @@ public class productViewController implements Initializable {
 
     }
 
-}
+    public void addNewProductClicked(ActionEvent event){
+        String[] productData = new String[4];
+
+        productData[0]  = productNameTxt.getText();
+        productData[1]  = descriptionTxt.getText();
+        productData[2]  = quantityTxt.getText();
+        productData[3]  = priceTxt.getText();
+
+        dao.addNewProduct(productData);
+
+    }
+
+    }
