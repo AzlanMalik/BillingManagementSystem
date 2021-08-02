@@ -1,12 +1,10 @@
 package Application.DAO;
 
 import Application.Model.Transaction;
-import Application.connection.ConnectionFactory;
+import Application.Utils.ConnectionFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.sql.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -133,7 +131,6 @@ public class TransactionDAO {
                 salesmanId = rs.getInt(1);
             }
 
-            System.out.println(salesmanId);
 
             String query = "Insert Into Transaction_Table T  (T.invoice_id, T.salesman_id, T.transaction_amount)  Values(?,?,?) ";
             pst = connection.prepareStatement(query);

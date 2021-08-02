@@ -4,6 +4,8 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 
 import java.time.LocalDate;
 
@@ -12,6 +14,7 @@ public class Invoice {
     private final SimpleIntegerProperty id,totalAmount,paidAmount;
     private final SimpleStringProperty customerName, companyName, salesmanName, status;
     private final ObjectProperty<LocalDate> date;
+    private CheckBox selection;
 
     public Invoice(int id, String customerName, String companyName, LocalDate date,
                         int totalAmount, int paidAmount, String salesmanName,
@@ -25,7 +28,16 @@ public class Invoice {
         this.paidAmount = new SimpleIntegerProperty(paidAmount);
         this.salesmanName = new SimpleStringProperty(salesmanName);
         this.status = new SimpleStringProperty(status);
+        this.selection = new CheckBox();
 
+    }
+
+    public CheckBox getSelection() {
+        return selection;
+    }
+
+    public void setSelection(Boolean selection) {
+        this.selection.setSelected(selection);
     }
 
 

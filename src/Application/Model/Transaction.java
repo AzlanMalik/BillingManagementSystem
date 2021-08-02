@@ -4,6 +4,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.control.CheckBox;
 
 import java.time.LocalDate;
 
@@ -12,6 +13,7 @@ public class Transaction {
     private final SimpleStringProperty customerName,companyName,city,status,salesman;
     private final SimpleIntegerProperty invoiceId,amount,dueBalance,paid;
     private final ObjectProperty<LocalDate> dueDate;
+    private CheckBox selection;
 
 
 
@@ -27,6 +29,23 @@ public class Transaction {
         this.dueDate = new SimpleObjectProperty<>(dueDate);
         this.salesman = new SimpleStringProperty(salesman);
         this.status = new SimpleStringProperty(status);
+        this.selection = new CheckBox();
+    }
+
+    public LocalDate getDueDate() {
+        return dueDate.get();
+    }
+
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate.set(dueDate);
+    }
+
+    public CheckBox getSelection() {
+        return selection;
+    }
+
+    public void setSelection(Boolean selection) {
+        this.selection.setSelected(selection);
     }
 
     public String getCustomerName() {

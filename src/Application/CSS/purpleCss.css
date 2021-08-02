@@ -1,0 +1,444 @@
+
+.table-view {
+    -fx-selection-bar: #4659E4;
+    -fx-selection-bar-non-focused: transparent;
+}
+
+
+.table-view .column-header,
+.table-view .column-header .filler,
+.table-view .column-header-background .filler {
+    -fx-background-color: derive;
+    -fx-stroke: transparent;
+    -fx-size:40;
+    -fx-alignment: CENTER ;
+    -fx-text-alignment: center;
+
+
+}
+.table-row-cell:filled:hover {
+
+    -fx-size:30;
+    -fx-alignment: CENTER;
+    -fx-text-alignment: center;
+}
+
+.table-view .column-header {
+    -fx-background-color: #F9FAFE;
+    -fx-font-size: 18px;
+}
+
+.table-view .table-cell{
+    -fx-font-size:15px;
+
+    /* -fx-text-fill:orange; */
+}
+
+.table-view:row-selection {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-fixed-cell-size: 40;
+    -fx-alignment: CENTER;
+    -fx-text-alignment: center;
+}
+/*
+.table-view{
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+}
+*/
+
+
+.table-view .table-column{
+    -fx-text-alignment: center;
+    -fx-alignment: CENTER
+
+}
+
+/* Remove spacing /////////////////////////////////////////////////////// */
+.pagination > .pagination-control > .control-box {
+    -fx-spacing: 0;
+}
+
+/* You can control the actual button sizes here */
+.pagination > .pagination-control > .control-box > .number-button,
+.pagination > .pagination-control > .control-box > .bullet-button,
+.pagination > .pagination-control > .control-box > .left-arrow-button,
+.pagination > .pagination-control > .control-box > .right-arrow-button {
+    -fx-background-insets: 0, 1;
+    -fx-background-color: lightgray, #FAFAFA;
+    -fx-min-width: 30;
+    -fx-min-height: 30;
+}
+
+/* Colors on hover */
+.pagination > .pagination-control > .control-box > .number-button:hover,
+.pagination > .pagination-control > .control-box > .bullet-button:hover,
+.pagination > .pagination-control > .control-box > .left-arrow-button:hover,
+.pagination > .pagination-control > .control-box > .right-arrow-button:hover {
+    -fx-background-insets: 0;
+    -fx-background-color: lightgray;
+}
+
+/* Selected toggle color */
+.pagination > .pagination-control > .control-box > .number-button:selected,
+.pagination > .pagination-control > .control-box > .bullet-button:selected{
+    -fx-background-insets: 0;
+    -fx-background-color: #4659E4;
+    -fx-text-fill: white;
+}
+
+.pagination {
+    -fx-page-information-visible: false;
+}
+
+
+/********************************************************************************/
+
+@font-face {
+    font-family: Avenir;
+    src: url('/Application/Icons/AvenirLTStd-Book.otf');
+}
+
+.button-blue {
+    -fx-background-color : #4659E4;
+    -fx-background-radius : 10px;
+    -fx-text-fill : white;
+    -fx-font-family : "Avenir LT Std 45 Book";
+    -fx-font-size : 15px;
+    -fx-focus-traversable: false;
+}
+
+.search-text-field {
+    -fx-background-image:url('/Application/Icons/searchIcon.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 98%;
+
+    -fx-background-radius : 12px;
+    -fx-background-color:  #F9FAFE;
+    -fx-font-size: 20;
+    -fx-focus-traversable: false;
+}
+
+
+.transparent-panel{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.round-pane{
+    -fx-background-color: white;
+    -fx-border-color: whitesmoke;
+    -fx-border-width: 5px;
+    -fx-background-radius: 15;
+    -fx-border-radius:15;
+}
+
+.effect-shadow-box{
+    -fx-background-color: white;
+    -fx-border-radius: 25 25 25 25;
+    -fx-background-radius: 25 25 25 25;
+    -fx-effect: dropshadow(three-pass-box, whitesmoke, 3, 0, 0, 0);
+}
+
+
+
+.delete-button{
+
+}
+.close-button {
+    -fx-background-color: #4659E4;
+    -size: 24;
+    -fx-min-height: -size;
+    -fx-min-width: -size;
+    -fx-max-height: -size;
+    -fx-max-width: -size;
+    -fx-shape: "M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z";
+}
+
+.close-button:hover{
+    -fx-background-color: #6275FC;
+}
+
+
+.label-heading{
+    -fx-font-family: "Franklin Gothic Medium";
+    -fx-font-size: 35;
+}
+
+.label-field-title{
+    -fx-font-family: "Calibri Light";
+    -fx-font-size: 20;
+}
+
+
+/*///////////// Text Area ********/
+.text-area {
+    -fx-background-color: white;
+    -fx-border-color: grey;
+    -fx-border-radius:12;
+    -fx-background-radius:12;
+    -fx-font-family: "Candara";
+    -fx-font-size: 20;
+    -fx-focus-traversable: false;}
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+/**********************-- Text Area ********************/
+.text-field-rounded{
+    -fx-background-radius : 12px;
+    -fx-border-radius: 12px;
+    -fx-background-color:  white;
+    -fx-border-color: grey;
+
+    -fx-font-family: "Candara";
+    -fx-font-size: 20;
+    -fx-focus-traversable: false;
+}
+
+
+.text-field-disabled{
+    -fx-background-radius : 12px;
+    -fx-border-radius: 12px;
+    -fx-background-color:  whitesmoke;
+    -fx-border-color: grey;
+
+    -fx-font-family: "Candara";
+    -fx-font-size: 20;
+    -fx-focus-traversable: false;
+}
+.combo-box-rounded{
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-background-color : white;
+    -fx-border-color: grey;
+
+    -fx-selection-bar:#4659E4;
+    -fx-focus-color: #4659E4;
+    -fx-faint-focus-color:white;
+
+    -fx-font-family: "Candara";
+    -fx-font-size: 20;
+    -fx-focus-traversable: false;
+}
+
+
+.combo-box-rounded .combo-box-popup > .list-view{
+    -fx-border-color : transparent;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+}
+.combo-box-rounded .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:selected{
+    -fx-background-color: #4659E4;
+}
+
+
+.combo-box-rounded .combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-border-color: transparent;
+}
+
+
+
+.date-picker {
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-background-color:  white;
+    -fx-border-color: grey;
+
+    -fx-font-family: "Candara";
+    -fx-font-size: 20;
+}
+.date-picker-popup{
+    -fx-alignment: right ;
+    -fx-scale-y: 1;
+    -fx-scale-x: 1;
+}
+
+.date-picker > .text-field{
+    -fx-background-radius: 12 0 0 12;
+    -fx-background-color: white;
+    -fx-border-color: lightgrey;
+    -fx-border-radius:  12 0 0 12;
+}
+
+.date-picker > .arrow-button{
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+
+}
+
+.date-picker > .arrow-button > .arrow {
+    -fx-shape: "M24 2v22h-24v-22h3v1c0 1.103.897 2 2 2s2-.897 2-2v-1h10v1c0 1.103.897 2 2 2s2-.897 2-2v-1h3zm-2 6h-20v14h20v-14zm-2-7c0-.552-.447-1-1-1s-1 .448-1 1v2c0 .552.447 1 1 1s1-.448 1-1v-2zm-14 2c0 .552-.447 1-1 1s-1-.448-1-1v-2c0-.552.447-1 1-1s1 .448 1 1v2zm6.687 13.482c0-.802-.418-1.429-1.109-1.695.528-.264.836-.807.836-1.503 0-1.346-1.312-2.149-2.581-2.149-1.477 0-2.591.925-2.659 2.763h1.645c-.014-.761.271-1.315 1.025-1.315.449 0 .933.272.933.869 0 .754-.816.862-1.567.797v1.28c1.067 0 1.704.067 1.704.985 0 .724-.548 1.048-1.091 1.048-.822 0-1.159-.614-1.188-1.452h-1.634c-.032 1.892 1.114 2.89 2.842 2.89 1.543 0 2.844-.943 2.844-2.518zm4.313 2.518v-7.718h-1.392c-.173 1.154-.995 1.491-2.171 1.459v1.346h1.852v4.913h1.711z";
+    -fx-background-color: -fx-mark-highlight-color, -fx-mark-color;
+    /*   -fx-background-insets: 1 0 -1 0, 0;
+       -fx-padding: 0.416667em 0.416667em 0.333333em 0.333333em; /* 5 5 4 4 */
+    -fx-pref-width: 30;
+    -fx-scale-x: 1;
+    -fx-scale-y: 2;
+
+
+    -fx-scale-shape: true;
+}
+
+
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.accordion {
+    -fx-background-color : #4659E4;
+}
+
+.titled-pane
+{
+    /* -fx-skin: "com.sun.javafx.scene.control.skin.TitledPaneSkin";*/
+    -fx-text-fill: #B4BED0;
+}
+.titled-pane:focused
+{
+    -fx-text-fill: white;
+
+}
+.titled-pane > .title
+{
+    -fx-background-color: transparent;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 15 15 0 0;
+    -fx-border-radius: 15 15 15 15;
+    -fx-border-color: #4659E5;
+    -fx-padding: 0.166667em 0.833333em 0.25em 0.833333em;
+}
+
+.titled-pane:focused > .title
+{
+    /*  -fx-color: -fx-focus-color;*/
+    /*-fx-background-color: linear-gradient(to left, #6275FC, transparent );*/
+
+    -fx-background-color : #5A6AE7, linear-gradient(to left, #95A1FE 0%, #6275FC 100%);
+    -fx-background-insets: 2 ,1;
+    -fx-background-radius: 15 15 0 0 , 15 15 15 15;
+}
+
+
+.titled-pane > .title > .arrow-button
+{
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0.0em 0.25em 0.0em 0.0em;
+}
+
+.titled-pane > .title > .arrow-button .arrow
+{
+    -fx-background-color: #B4BED0;
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.25em 0.3125em 0.25em 0.3125em;
+    -fx-shape: "M 270.30,58.65 C 270.30,58.65 153.00,175.95 153.00,175.95 153.00,175.95 35.70,58.65 35.70,58.65 35.70,58.65 0.00,94.35 0.00,94.35 0.00,94.35 153.00,247.35 153.00,247.35 153.00,247.35 306.00,94.35 306.00,94.35 306.00,94.35 270.30,58.65 270.30,58.65 Z";
+
+}
+
+.titled-pane:collapsed > .title > .arrow-button .arrow
+{
+    -fx-rotate: -90;
+}
+
+
+
+.titled-pane > *.content
+{
+    -fx-background-color: linear-gradient(to left, #5A6AE8 0%, #5A6AE6 100%);
+    -fx-background-radius: 0 0 12 12;
+    -fx-border-color: #4659E5;
+    -fx-border-radius: 0 0 12 12;
+    -fx-background-insets: 0, 0 1 1 1;
+    -fx-padding: 0.167em;
+}
+
+
+.menu-label{
+    -fx-text-fill: #B4BED0;
+}
+
+.menu-label:hover{
+    -fx-text-fill: white;
+}
+
+
+/*///*********************  Pagination Mist Silver ***************************/
+.pagination .pagination-control .left-arrow {
+    -fx-background-color: -fx-mark-color;
+    -fx-background-insets: 0;
+    -fx-padding:7 6 0 0;
+    -fx-shape: "m 11.499,17.75 -2.889,0 -3.86,-4.124 3.86,-4.125 2.889,0 -3.375,4.125 3.375,4.124 z";
+    -fx-scale-shape: true;
+}
+.pagination .pagination-control .right-arrow {
+    -fx-background-color: -fx-mark-color;
+    -fx-background-insets: 0;
+    -fx-shape: "m 4.75,9.501 2.889,0 3.86,4.124 -3.86,4.125 -2.889,0 L 8.125,13.625 4.75,9.501 z";
+    -fx-padding:7 6 0 0;
+    -fx-scale-shape: true;
+}
+.pagination .pagination-control .bullet-button {
+    -fx-background-color: rgb(76,81,86), linear-gradient(to bottom,rgb(200,202,207) 0%,rgb(180,182,187) 100%), linear-gradient(to bottom,rgb(222,223,228) 0%,rgb(195,199,203) 100%);
+    -fx-background-insets: 4,5,6;
+    -fx-background-radius: 4em, 4em, 4em;
+    -fx-padding: 0.333em;
+}
+.pagination .pagination-control .left-arrow-button{
+    -fx-padding: 1;
+}
+.pagination .pagination-control .right-arrow-button {
+    -fx-padding: 1;
+}
+.pagination .pagination-control .number-button {
+    -fx-padding: 1 2 1 2;
+}
+.pagination .pagination-control .bullet-button:hover {
+    -fx-background-color: rgb(76,81,86), linear-gradient(to bottom,rgb(200,202,207) 0%,rgb(180,182,187) 100%), linear-gradient(to bottom,rgb(237,239,245) 0%,rgb(211,214,217) 100%);
+}
+.pagination .pagination-control .bullet-button:pressed {
+    -fx-background-color: rgb(76,81,86),rgb(76,81,86), linear-gradient(to bottom,rgb(200,202,207) 0%,rgb(180,182,187) 100%), linear-gradient(to bottom,rgb(168,177,190) 0%,rgb(140,150,162) 100%);
+    -fx-background-insets: 4,5,6,7;
+}
+.pagination .pagination-control .bullet-button:selected {
+    -fx-background-color: rgb(76,81,86), linear-gradient(to bottom,rgb(200,202,207) 0%,rgb(180,182,187) 100%), linear-gradient(to bottom,rgb(209,223,233) 0%,rgb(199,214,224) 100%);
+    -fx-background-insets: 4,5,6;
+}
+.pagination.bullet .pagination-control .left-arrow-button, .pagination.bullet .pagination-control .right-arrow-button {
+    -fx-background-radius: 4em;
+}
+.pagination .pagination-control .number-button {
+    -fx-background-color: rgb(76,81,86), linear-gradient(to bottom,rgb(200,202,207) 0%,rgb(180,182,187) 100%), linear-gradient(to bottom,rgb(222,223,228) 0%,rgb(195,199,203) 100%);
+    -fx-background-insets: 0,1,2;
+}
+.pagination .pagination-control .number-button:hover {
+    -fx-background-color: rgb(76,81,86), linear-gradient(to bottom,rgb(200,202,207) 0%,rgb(180,182,187) 100%), linear-gradient(to bottom,rgb(237,239,245) 0%,rgb(211,214,217) 100%);
+    -fx-background-insets: 0,1,2;
+}
+.pagination .pagination-control .number-button:pressed {
+    -fx-background-color: rgb(76,81,86),rgb(76,81,86), linear-gradient(to bottom,rgb(200,202,207) 0%,rgb(180,182,187) 100%), linear-gradient(to bottom,rgb(168,177,190) 0%,rgb(140,150,162) 100%);
+    -fx-background-insets: 0,1,2,3;
+}
+.pagination .pagination-control .number-button:selected {
+    -fx-background-color: rgb(76,81,86), linear-gradient(to bottom,rgb(200,202,207) 0%,rgb(180,182,187) 100%), linear-gradient(to bottom,rgb(209,223,233) 0%,rgb(199,214,224) 100%);
+    -fx-background-insets: 0,1,2;
+}
+.pagination .pagination-control .page-information {
+    -fx-text-fill: black;
+}
+
+
+
+.text-input:error {
+    -fx-border-color: red;
+}

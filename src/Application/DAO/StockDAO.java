@@ -2,7 +2,7 @@ package Application.DAO;
 
 
 import Application.Model.Product;
-import Application.connection.ConnectionFactory;
+import Application.Utils.ConnectionFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -54,22 +54,59 @@ public class StockDAO {
 
     }
 
-    public void updateStock(String productName, String manufacturer, int quantity){
-    try{
-        connection = ConnectionFactory.getConnection();
+    public void updateStock(String[] arr){
+        try{
+            connection = ConnectionFactory.getConnection();
 
-        String query = "Insert into StockUpdate_Table(product_id,stockUpdate_quantity,manufacturer_name)" +
-                " Values((Select product_id From product_table where product_name = ?),?,?)";
+            String query = "Insert into StockUpdate_Table(product_id,manufacturer_name,stockUpdate_quantity) " +
+                    " Values((Select product_id From product_table where product_name = ?),?,?)";
 
-        pst = connection.prepareStatement(query);
-        pst.setString(1,productName);
-        pst.setInt(2,quantity);
-        pst.setString(3,manufacturer);
-        pst.executeQuery();
+            String queryWithDate = "Insert into StockUpdate_Table(product_id,manufacturer_name,stockUpdate_quantity,stockUpdate_date) " +
+                    " Values((Select product_id From product_table where product_name = ?),?,?,TO_Date(?,'mm,dd,yyyy')) ";
 
-    } catch (SQLException throwables) {
-        throwables.printStackTrace();
+            if(arr[1] == null)
+                arr[1] = "  ";
+
+            if(arr[3] == null){
+                System.out.println("no Date Method Worked");
+                pst = connection.prepareStatement(query);
+            }
+            else {
+                pst = connection.prepareStatement(queryWithDate);
+                pst.setString(4, arr[3]);
+            }
+
+            pst.setString(1, arr[0]);
+            pst.setString(2, arr[1]);
+            pst.setInt(3, Integer.parseInt(arr[2]));
+            pst.executeQuery();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }finally{
+            closeConnection();
+        }
     }
+
+    public Boolean checkStock(String productName,int quantity){
+            int stockQuantity = 0;
+        try{
+            connection = ConnectionFactory.getConnection();
+
+            String query = "Select product_quantity From Product_Table where Product_Name = ?";
+
+            pst = connection.prepareStatement(query);
+            pst.setString(1,productName);
+            rs = pst.executeQuery();
+
+            while(rs.next()){
+               stockQuantity = rs.getInt(1);
+            }
+        }catch(SQLException throwables){ }finally {
+            closeConnection();
+        }
+
+        return stockQuantity >= quantity ;
     }
 
 

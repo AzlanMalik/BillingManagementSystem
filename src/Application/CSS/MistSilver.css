@@ -1703,4 +1703,8 @@
 }
 
 
+.text-input:error {
+    -fx-border-color: red;
+}
+
 

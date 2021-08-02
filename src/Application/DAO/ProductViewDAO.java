@@ -1,7 +1,7 @@
 package Application.DAO;
 
 import Application.Model.Product;
-import Application.connection.ConnectionFactory;
+import Application.Utils.ConnectionFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.sql.*;
@@ -50,6 +50,29 @@ public class ProductViewDAO {
 
         return productList;
 
+    }
+
+    public void deleteProducts(ObservableList<Product> list){
+        try {
+
+            connection = ConnectionFactory.getConnection();
+
+            String query = "Delete From Product_Table where Product_id = ?";
+
+            pst = connection.prepareStatement(query);
+
+            for(Product product : list){
+                pst.setInt(1,product.getId());
+                pst.addBatch();
+            }
+
+            pst.executeBatch();
+
+        }catch(SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
     }
 
 

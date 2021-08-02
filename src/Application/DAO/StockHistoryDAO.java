@@ -2,7 +2,7 @@ package Application.DAO;
 
 
 import Application.Model.StockHistory;
-import Application.connection.ConnectionFactory;
+import Application.Utils.ConnectionFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

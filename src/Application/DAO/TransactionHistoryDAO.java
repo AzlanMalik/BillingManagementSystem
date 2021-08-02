@@ -1,8 +1,7 @@
 package Application.DAO;
 
-import Application.Model.Transaction;
 import Application.Model.TransactionHistory;
-import Application.connection.ConnectionFactory;
+import Application.Utils.ConnectionFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

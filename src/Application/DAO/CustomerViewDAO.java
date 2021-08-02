@@ -1,7 +1,7 @@
 package Application.DAO;
 
 import Application.Model.Customer;
-import Application.connection.ConnectionFactory;
+import Application.Utils.ConnectionFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -9,24 +9,23 @@ import java.sql.*;
 
 public class CustomerViewDAO {
 
-    ObservableList<Customer> customerList = FXCollections.observableArrayList();
-
-    private Connection connection;
-    private ResultSet rs;
-    private Statement stmt;
-    private PreparedStatement pst;
 
 
     public ObservableList<Customer> getCustomerList() {
 
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+
+        ObservableList<Customer> customerList = FXCollections.observableArrayList();
+
         try {
 
-            connection = ConnectionFactory.getConnection();
+            conn = ConnectionFactory.getConnection();
 
             String query = "Select customer_id,customer_name,customer_companyName,customer_city,customer_previousBalance , customer_phoneNo1 from Customer_Table";
 
-
-            stmt = connection.createStatement();
+            stmt = conn.createStatement();
             rs = stmt.executeQuery(query);
 
             while (rs.next()) {
@@ -44,7 +43,9 @@ public class CustomerViewDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            closeConnection();
+            ConnectionFactory.closeQuietly(rs);
+            ConnectionFactory.closeQuietly(stmt);
+            ConnectionFactory.closeQuietly(conn);
         }
 
         return customerList;
@@ -52,19 +53,22 @@ public class CustomerViewDAO {
 
     /////// ----PopUp Methods------
 
-
     public String[] getCustomerData(int custId) {
 
         String[] arr = new String[8];
 
+        Connection conn = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
         try {
 
-            connection = ConnectionFactory.getConnection();
+            conn = ConnectionFactory.getConnection();
 
             String query = "Select customer_name,customer_companyName,customer_address,customer_city,customer_state,customer_phoneNo1, customer_PhoneNo2, customer_previousBalance from Customer_Table where customer_id = ?";
 
 
-            pst = connection.prepareStatement(query);
+            pst = conn.prepareStatement(query);
             pst.setInt(1, custId);
             rs = pst.executeQuery();
 
@@ -82,16 +86,21 @@ public class CustomerViewDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            closeConnection();
+            ConnectionFactory.closeQuietly(rs);
+            ConnectionFactory.closeQuietly(pst);
+            ConnectionFactory.closeQuietly(conn);
         }
         return arr;
     }
 
     public void updateCustomer(String[] customerData,int id){
 
-        try {
+        Connection conn = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
 
-        connection = ConnectionFactory.getConnection();
+        try {
+            conn = ConnectionFactory.getConnection();
 
         String query = "Update Customer_Table " +
                 " Set customer_name = ? ,customer_companyName = ?,customer_address = ? ,customer_city = ?, " +
@@ -99,7 +108,7 @@ public class CustomerViewDAO {
                 " where customer_id = ? ";
 
 
-        pst = connection.prepareStatement(query);
+        pst = conn.prepareStatement(query);
         pst.setString(1, customerData[0]);
         pst.setString(2, customerData[1]);
         pst.setString(3, customerData[2]);
@@ -116,7 +125,9 @@ public class CustomerViewDAO {
     } catch(SQLException e) {
             e.printStackTrace();
     }finally {
-        closeConnection();
+            ConnectionFactory.closeQuietly(rs);
+            ConnectionFactory.closeQuietly(pst);
+            ConnectionFactory.closeQuietly(conn);
     }
 
 }
@@ -124,14 +135,17 @@ public class CustomerViewDAO {
 
     public void addNewCustomer (String[] customerData){
 
-        try {
+        Connection conn = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
 
-            connection = ConnectionFactory.getConnection();
+        try {
+            conn = ConnectionFactory.getConnection();
 
             String query = "Insert Into Customer_Table(customer_name,customer_companyName,customer_address,customer_city,customer_state,customer_phoneNo1, customer_PhoneNo2, customer_previousBalance) " +
                     " Values(?,?,?,?,?,?,?,?)";
 
-            pst = connection.prepareStatement(query);
+            pst = conn.prepareStatement(query);
             pst.setString(1,customerData[0]);
             pst.setString(2,customerData[1]);
             pst.setString(3,customerData[2]);
@@ -147,35 +161,9 @@ public class CustomerViewDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }finally{
-            closeConnection();
-        }
-
-    }
-
-
-
-
-    ////// Methods
-    public void closeConnection(){
-        try {
-            if(rs!=null) rs.close();
-        } catch (SQLException se) {
-            se.printStackTrace();
-        }
-        try {
-            if(stmt!=null) stmt.close();
-        } catch (SQLException se) {
-            se.printStackTrace();
-        }
-        try {
-            if(pst!=null) pst.close();
-        } catch (SQLException se) {
-            se.printStackTrace();
-        }
-        try {
-            if(connection!=null) connection.close();
-        } catch (SQLException se) {
-            se.printStackTrace();
+            ConnectionFactory.closeQuietly(rs);
+            ConnectionFactory.closeQuietly(pst);
+            ConnectionFactory.closeQuietly(conn);
         }
     }
 

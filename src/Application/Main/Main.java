@@ -9,7 +9,10 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 
 public class Main extends Application {
@@ -21,14 +24,21 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
        Parent root = FXMLLoader.load(getClass().getResource("/Application/View/mainMenu.fxml"));
-        //primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.setTitle("Bill Soft");
-        Scene scene = new Scene(root);
+
+       // Font.loadFont(getClass().getResourceAsStream("/Application/Icons/BalooBhaina2-Medium.ttf"),12);
+       //primaryStage.initStyle(StageStyle.UNDECORATED);
+       primaryStage.setTitle("Bill Soft");
+       Scene scene = new Scene(root);
+       /*/*/////////////////
+         primaryStage.initStyle(StageStyle.TRANSPARENT);
+      scene.setFill(Color.TRANSPARENT);
+
+        /////////////////////////*/
 
 
 
-        scene.getStylesheets().add("/Application/CSS/MistSilver.css");
-        primaryStage.getIcons().add(new Image("/Application/Icons/logo.jpg"));
+        //scene.getStylesheets().add("/Application/CSS/MistSilver.css");
+        primaryStage.getIcons().add(new Image("/Application/Icons/logo.png"));
         primaryStage.setScene(scene);
         primaryStage.show();
 

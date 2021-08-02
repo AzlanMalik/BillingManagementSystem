@@ -4,6 +4,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.control.CheckBox;
 
 import java.time.LocalDate;
 
@@ -12,6 +13,7 @@ public class StockHistory {
     private final SimpleStringProperty productName, description, manufacturerName;
     private final SimpleIntegerProperty updateId, quantity;
     private final ObjectProperty<LocalDate> updateDate;
+    private CheckBox selection;
 
     public StockHistory(int updateId, String productName, String description, int quantity, LocalDate updateDate, String manufacturerName) {
         this.updateId = new SimpleIntegerProperty(updateId);
@@ -20,7 +22,17 @@ public class StockHistory {
         this.quantity = new SimpleIntegerProperty(quantity);
         this.updateDate = new SimpleObjectProperty<>(updateDate);
         this.manufacturerName = new SimpleStringProperty(manufacturerName);
+        this.selection = new CheckBox();
     }
+
+    public CheckBox getSelection() {
+        return selection;
+    }
+
+    public void setSelection(Boolean selection) {
+        this.selection.setSelected(selection);
+    }
+
 
     public String getProductName() {
         return productName.get();

@@ -1,6 +1,6 @@
 package Application.DAO;
 
-import Application.connection.ConnectionFactory;
+import Application.Utils.ConnectionFactory;
 
 import java.sql.*;
 
